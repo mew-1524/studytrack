@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyTrack – Focus Timer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><span class="brand-icon">📘</span><span class="brand-name">StudyTrack</span></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">🏠 Dashboard</a>
+      <a href="marks.html" class="nav-item">📝 Marks</a>
+      <a href="tasks.html" class="nav-item">✅ Tasks</a>
+      <a href="focus.html" class="nav-item active">⏱ Focus Timer</a>
+      <a href="analytics.html" class="nav-item">📊 Analytics</a>
+      <a href="profile.html" class="nav-item">👤 Profile</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="sidebarAvatar">A</div>
+        <div><p class="user-name" id="sidebarName">Loading...</p><p class="user-role">Student</p></div>
+      </div>
+      <button class="btn-logout" onclick="logoutUser()">Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="mobile-bar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <span class="brand-name">StudyTrack</span>
+    </div>
+    <header class="topbar">
+      <div>
+        <h1 class="topbar-title">⏱ Focus Timer</h1>
+        <p class="topbar-sub">Stay focused with Pomodoro technique</p>
+      </div>
+    </header>
+
+    <div class="focus-center">
+      <div class="card timer-card">
+        <div class="mode-tabs">
+          <button class="mode-btn active" onclick="setMode(25,5,'Focus',this)">Focus</button>
+          <button class="mode-btn" onclick="setMode(5,0,'Short Break',this)">Short Break</button>
+          <button class="mode-btn" onclick="setMode(15,0,'Long Break',this)">Long Break</button>
+        </div>
+
+        <p class="timer-label" id="timerLabel">Focus Session</p>
+        <div class="timer-display" id="timerDisplay">25:00</div>
+
+        <div class="timer-controls">
+          <button class="btn-primary" id="startBtn" onclick="startTimer()">▶ Start</button>
+          <button class="btn-outline" onclick="resetTimer()">↺ Reset</button>
+        </div>
+
+        <p class="timer-session-info">Session <span id="sessionCount">1</span> of 4 — then take a long break</p>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <h3 class="card-title">Today's Focus Log</h3>
+        <ul class="task-list" id="focusLog">
+          <li class="empty-state">No sessions completed today.</li>
+        </ul>
+        <p style="margin-top:12px;color:#666;font-size:14px">Total today: <strong id="totalFocusMin">0</strong> minutes</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="focus.js"></script>
+</body>
+</html>

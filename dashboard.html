@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyTrack – Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">📘</span>
+      <span class="brand-name">StudyTrack</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">🏠 Dashboard</a>
+      <a href="marks.html" class="nav-item">📝 Marks</a>
+      <a href="tasks.html" class="nav-item">✅ Tasks</a>
+      <a href="focus.html" class="nav-item">⏱ Focus Timer</a>
+      <a href="analytics.html" class="nav-item">📊 Analytics</a>
+      <a href="profile.html" class="nav-item">👤 Profile</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="sidebarAvatar">A</div>
+        <div>
+          <p class="user-name" id="sidebarName">Loading...</p>
+          <p class="user-role">Student</p>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="logoutUser()">Logout</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="mobile-bar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <span class="brand-name">StudyTrack</span>
+    </div>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div>
+        <p class="greeting" id="greetingText">Good Morning 🌤</p>
+        <h1 class="topbar-title">Hey, <span id="userName">...</span> 👋</h1>
+        <p class="topbar-sub">Here's your study overview for today.</p>
+      </div>
+      <button class="btn-primary" onclick="window.location.href='focus.html'">⏱ Start Focus</button>
+    </header>
+
+    <!-- STAT CARDS -->
+    <section class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background:#e8e3ff">📚</div>
+        <p class="stat-value" id="totalSubjects">0</p>
+        <p class="stat-label">Total Subjects</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:#dcf5e7">📈</div>
+        <p class="stat-value" id="avgScore">0%</p>
+        <p class="stat-label">Average Score %</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:#fff3dc">⏱</div>
+        <p class="stat-value" id="focusMinutes">0</p>
+        <p class="stat-label">Focus Minutes</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:#fde8e8">✅</div>
+        <p class="stat-value" id="pendingTasks">0</p>
+        <p class="stat-label">Pending Tasks</p>
+      </div>
+    </section>
+
+    <!-- QUICK ACCESS + PENDING TASKS -->
+    <section class="two-col">
+
+      <div class="card">
+        <h3 class="card-title">Quick Access</h3>
+        <div class="quick-grid">
+          <a href="marks.html" class="quick-btn">📝 Add Marks</a>
+          <a href="tasks.html" class="quick-btn">➕ Add Task</a>
+          <a href="focus.html" class="quick-btn">⏱ Focus Timer</a>
+          <a href="analytics.html" class="quick-btn">📊 Analytics</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Pending Tasks</h3>
+        <ul class="task-list" id="pendingTaskList">
+          <li class="empty-state">🎉 No pending tasks!</li>
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="dashboard.js"></script>
+  <script>function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open')}</script>
+</body>
+</html>

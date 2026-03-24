@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyTrack – Profile</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><span class="brand-icon">📘</span><span class="brand-name">StudyTrack</span></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">🏠 Dashboard</a>
+      <a href="marks.html" class="nav-item">📝 Marks</a>
+      <a href="tasks.html" class="nav-item">✅ Tasks</a>
+      <a href="focus.html" class="nav-item">⏱ Focus Timer</a>
+      <a href="analytics.html" class="nav-item">📊 Analytics</a>
+      <a href="profile.html" class="nav-item active">👤 Profile</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="sidebarAvatar">A</div>
+        <div><p class="user-name" id="sidebarName">Loading...</p><p class="user-role">Student</p></div>
+      </div>
+      <button class="btn-logout" onclick="logoutUser()">Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <!-- Mobile topbar -->
+    <div class="mobile-bar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <span class="brand-name">StudyTrack</span>
+    </div>
+
+    <header class="topbar">
+      <div>
+        <h1 class="topbar-title">👤 Profile</h1>
+        <p class="topbar-sub">Manage your account settings</p>
+      </div>
+    </header>
+
+    <!-- Profile Card -->
+    <div class="profile-layout">
+      <div class="card profile-avatar-card">
+        <div class="profile-big-avatar" id="profileAvatar">A</div>
+        <p class="profile-name" id="profileName">Loading...</p>
+        <p class="profile-email" id="profileEmail">—</p>
+        <span class="badge badge-low" style="margin-top:8px">Student</span>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+
+        <!-- Update Name -->
+        <div class="card">
+          <h3 class="card-title">Update Display Name</h3>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="newName" placeholder="Your name"/>
+          </div>
+          <p id="nameMsg" class="error-msg"></p>
+          <button class="btn-primary" onclick="updateName()">Save Name</button>
+        </div>
+
+        <!-- Change Password -->
+        <div class="card">
+          <h3 class="card-title">Change Password</h3>
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" id="newPassword" placeholder="At least 6 characters"/>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat password"/>
+          </div>
+          <p id="passMsg" class="error-msg"></p>
+          <button class="btn-primary" onclick="changePassword()">Update Password</button>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="card">
+          <h3 class="card-title">Account Summary</h3>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <p class="summary-val" id="summarySubjects">—</p>
+              <p class="summary-label">Subjects</p>
+            </div>
+            <div class="summary-item">
+              <p class="summary-val" id="summaryTasks">—</p>
+              <p class="summary-label">Total Tasks</p>
+            </div>
+            <div class="summary-item">
+              <p class="summary-val" id="summaryFocus">—</p>
+              <p class="summary-label">Focus Mins</p>
+            </div>
+            <div class="summary-item">
+              <p class="summary-val" id="summaryAvg">—</p>
+              <p class="summary-label">Avg Score</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="card danger-card">
+          <h3 class="card-title" style="color:#dc2626">Danger Zone</h3>
+          <p style="font-size:14px;color:#6b7280;margin-bottom:14px">This will permanently delete all your data.</p>
+          <button class="btn-danger" onclick="deleteAccount()">🗑 Delete My Account</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>
